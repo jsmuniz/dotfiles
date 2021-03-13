@@ -1,7 +1,9 @@
 #!/bin/sh
 
-#Adding ppas
+#Adding repositories
 add-apt-repository ppa:atareao/telegram -y
+wget https://packages.microsoft.com/config/ubuntu/20.10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
 
 
 #Updating apt
@@ -28,10 +30,16 @@ apt install code -y
 sudo -u jonathanmuniz flatpak install flathub com.jetbrains.Rider -y
 sudo apt-get install -y gitk 
 
+#GitK
 git clone https://github.com/dracula/gitk.git
 mkdir -p /home/jonathanmuniz/.config/git
 cp gitk/gitk /home/jonathanmuniz/.config/git/
-rm -rf gitk
+
+
+#.NET SDK
+apt install -y apt-transport-https
+apt update
+apt install dotnet-sdk-5.0 -y
 
 #Command Line Tools
 apt install zsh -y
@@ -45,6 +53,9 @@ fi
 #Instalando zinit
 sudo -u jonathanmuniz sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 
+#Cleaning
+rm -rf gitk
+rm -rf packages-microsoft-prod.deb
 
 
 

@@ -40,6 +40,8 @@ cp gitk/gitk /home/jonathanmuniz/.config/git/
 apt install -y apt-transport-https
 apt update
 apt install dotnet-sdk-5.0 -y
+apt install dotnet-sdk-3.1 -y
+
 
 #Docker
 

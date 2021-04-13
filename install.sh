@@ -3,8 +3,10 @@
 #Adding repositories
 add-apt-repository ppa:atareao/telegram -y
 wget https://packages.microsoft.com/config/ubuntu/20.10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-sudo dpkg -i packages-microsoft-prod.deb
-
+dpkg -i packages-microsoft-prod.deb
+curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add - 
+echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+add-apt-repository ppa:hluk/copyq -y
 
 #Updating apt
 apt update
@@ -15,6 +17,9 @@ apt update
 
 #General
 apt install telegram -y
+apt install spotify-client -y
+apt install flameshot -y
+apt install copyq -y
 
 dpkg --status teams &> /dev/null
 if ! [ $? -eq 0 ]; then
@@ -29,6 +34,8 @@ fi
 apt install code -y
 sudo -u jonathanmuniz flatpak install flathub com.jetbrains.Rider -y
 sudo apt-get install -y gitk 
+apt install -y virtualbox
+
 
 #GitK
 git clone https://github.com/dracula/gitk.git
